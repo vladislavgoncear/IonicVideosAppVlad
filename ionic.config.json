@@ -1,0 +1,7 @@
+{
+  "name": "IonicVideosAppVlad",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
