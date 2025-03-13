@@ -1,17 +1,22 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" mode = "ios">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Configuració
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" mode = "ios">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Informacio</ion-card-title>
+      <ion-card-subtitle>Creador de l'app</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      El creador d'aquesta app es diu Vladislav i es un estudiant del Institut del ebre.
+    </ion-card-content>
+  </ion-card>
 
   <app-explore-container name="Tab 3 page"></app-explore-container>
 </ion-content>
