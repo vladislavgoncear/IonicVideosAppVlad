@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:8000/api'; // Cambia esto a la URL de tu backend
+  private apiUrl = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) {}
 
@@ -31,5 +31,9 @@ export class ApiService {
 
   getCredentials(): Observable<any> {
     return this.http.get(`${this.apiUrl}/user`);
+  }
+
+  deleteVideo(videoName: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete/video`, { body: { video: videoName } });
   }
 }

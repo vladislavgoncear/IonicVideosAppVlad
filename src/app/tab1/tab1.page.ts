@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { lastValueFrom } from 'rxjs';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -12,7 +13,7 @@ export class Tab1Page implements OnInit {
 
   videos: any[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private alertController: AlertController) {}
 
   ngOnInit() {
     this.loadVideos();
@@ -32,5 +33,26 @@ export class Tab1Page implements OnInit {
     } catch (error) {
       console.error('Error loading videos', error);
     }
+  }
+
+  async deleteVideo(videoName: string) {
+    try {
+      await lastValueFrom(this.apiService.deleteVideo(videoName));
+      console.log('Video deleted successfully');
+      this.loadVideos(); // Recargar la lista de videos después de eliminar
+      this.presentAlert('Video borrado', 'El video se ha borrado correctamente.');
+    } catch (error) {
+      console.error('Error deleting video', error);
+    }
+  }
+
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }
